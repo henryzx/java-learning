@@ -6,16 +6,16 @@ package cc150.chpt12;
  */
 public class Q1 {
     public static void main(String[] args) {
-        Cons<String> node = new Cons<String>("a", new Cons<String>("b", new Cons<String>("c", new Cons<String>("d", new Cons<String>("f", null)))));
-        Cons<String> last = findNthToLastByOffset(node, 4);
+        Node node = new Node("a", new Node("b", new Node("c", new Node("d", new Node("f", null)))));
+        Node last = findNthToLastByOffset(node, 4);
         System.out.println(last.data);
     }
 
-    private static Cons<String> findNthToLastByRevert(Cons<String> root, int n) {
-        Cons<String> revert = null;
-        Cons<String> node = root;
+    private static Node findNthToLastByRevert(Node root, int n) {
+        Node revert = null;
+        Node node = root;
         while (node != null) {
-            Cons<String> copy = new Cons<String>(node.data, revert);
+            Node copy = new Node(node.data, revert);
             revert = copy;
             node = node.next;
         }
@@ -25,8 +25,8 @@ public class Q1 {
         return revert;
     }
 
-    private static Cons<String> findNthToLastByOffset(Cons<String> root, int n) {
-        Cons<String> tail = root;
+    private static Node findNthToLastByOffset(Node root, int n) {
+        Node tail = root;
         while (n-- > 0) {
             if (tail == null) return null;
             tail = tail.next;
